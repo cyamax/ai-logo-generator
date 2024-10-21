@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>AI系っぽいサムネジェネレーター</title>
     <style>
       body {
@@ -31,7 +31,9 @@
         align-items: center;
       }
 
-      textarea, select, button {
+      textarea,
+      select,
+      button {
         padding: 10px;
         margin: 5px;
         font-size: 16px;
@@ -48,6 +50,11 @@
         border: none;
         cursor: pointer;
       }
+      .github-link {
+        /* GitHubリンクのスタイル */
+        display: block;
+        margin-top: 10px;
+      }
     </style>
   </head>
   <body>
@@ -61,10 +68,15 @@
           <option value="serif">serif</option>
           <option value="'MS 明朝', serif">MS 明朝</option>
         </select>
-        <input type="range" id="fontSizeSlider" min="10" max="500" value="60">
+        <input type="range" id="fontSizeSlider" min="10" max="500" value="60" />
         <span id="fontSizeValue">60</span>px
         <button id="download">ダウンロード</button>
       </div>
+      <a
+        href="https://github.com/cyamax/ai-thumbnail-generator"
+        class="github-link"
+        >GitHubリポジトリ</a
+      >
     </div>
     <script>
       const downloadButton = document.getElementById("download");
