@@ -80,7 +80,11 @@
         <select id="fontSelect">
           <option value="sans-serif">sans-serif</option>
           <option value="serif">serif</option>
-          <option value="'MS 明朝', serif">MS 明朝</option>
+          <option value="'Times New Roman', serif">Times New Roman</option>
+          <option value="'Arial', sans-serif">Arial</option>
+          <option value="'Courier New', monospace">Courier New</option>
+          <option value="'游ゴシック体', 'Yu Gothic', sans-serif">游ゴシック体</option>
+          <option value="'游明朝体', 'Yu Mincho', serif">游明朝体</option>
         </select>
         <input type="range" id="fontSizeSlider" min="10" max="500" value="60" />
         <span id="fontSizeValue">60</span>px
@@ -105,6 +109,7 @@
         const text = textInput.value;
         const font = fontSelect.value;
         const fontSize = fontSizeSlider.value;
+        console.log(font)
 
         // キャンバスをクリア
         ctx.clearRect(0, 0, canvas.width, canvas.height);
