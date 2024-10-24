@@ -89,6 +89,7 @@
         <select id="fontWeightSelect">
           <option value="normal">normal</option>
           <option value="bold">bold</option>
+        </select>
         <input type="range" id="fontSizeSlider" min="10" max="500" value="60" />
         <span id="fontSizeValue">60</span>px
         <button id="download">ダウンロード</button>
@@ -115,36 +116,41 @@
         const font = fontSelect.value;
         const fontWeight = fontWeightSelect.value;
         const fontSize = fontSizeSlider.value;
-
-        console.log(fontWeight)
-
+      
         // キャンバスをクリア
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+      
         // グラデーションの背景を設定
         const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
         gradient.addColorStop(0, "#cd22fa");
         gradient.addColorStop(1, "#2083bd");
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        // 文字の色を白に設定
-        ctx.fillStyle = "#ffffff";
-
+      
         // フォントを設定
         ctx.font = `${fontWeight} ${fontSize}px ${font}`; 
+      
+        // 線の太さを設定 (例: 5px)
+        ctx.lineWidth = 100;
         // テキストを改行で分割
         const lines = text.split("\n");
-
+      
         // テキスト全体の高さ（行間を含む）
         const lineHeight = fontSize * 1.2;
         const textHeight = lines.length * lineHeight;
-
+      
         // 各行を描画
         lines.forEach((line, i) => {
           const textWidth = ctx.measureText(line).width;
           const x = (canvas.width - textWidth) / 2;
           const y = canvas.height / 2 - textHeight / 2 + (i + 1) * lineHeight;
+      
+          // 文字の輪郭を描画
+          ctx.strokeStyle = "#ffffff"; // 輪郭の色を白に設定
+          ctx.strokeText(line, x, y);
+      
+          // 文字の内部を塗りつぶす
+          ctx.fillStyle = gradient; // 塗りつぶす色を背景色と同じに設定
           ctx.fillText(line, x, y);
         });
       }
